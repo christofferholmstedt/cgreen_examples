@@ -1,6 +1,18 @@
 #include "cgreen/cgreen.h"
+#include "cgreen/mocks.h"
 #include "words.h"
 #include <string.h>
+#include <stdlib.h>
+
+void mocked_callback(const char *word, void *memo) {
+    mock(word, memo);
+}
+
+Ensure(single_word_sentence_invokes_callback_once) {
+    expect(mocked_callback,
+            when(word, is_equal_to_string("Word")), when(memo, is_equal_to(NULL)));
+    words("Word", &mocked_callback, NULL);
+}
 
 Ensure(word_count_returned_from_split) {
     char *sentence = strdup("Birds of a feather");
@@ -23,6 +35,7 @@ TestSuite *words_tests() {
 
     add_test(suite, word_count_returned_from_split);
     add_test(suite, spaces_should_be_converted_to_zeroes);
+    add_test(suite, single_word_sentence_invokes_callback_once);
 
     return suite;
 }
