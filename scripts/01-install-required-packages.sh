@@ -9,4 +9,5 @@
 sudo apt-get -y install vim git
 
 ### Build tools
-sudo apt-get -y install build-essential doxygen
+sudo apt-get -y install build-essential doxygen \
+                        subversion cmake

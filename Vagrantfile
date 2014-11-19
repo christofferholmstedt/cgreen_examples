@@ -46,8 +46,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Provisioning
     config.vm.provision :shell, :path => "./scripts/00-bootstrap.sh"
     config.vm.provision :shell, :path => "./scripts/01-install-required-packages.sh"
-    # config.vm.provision :shell, :privileged => false, :path => "./scripts/51-set-environment-variables.sh"
-    # config.vm.provision :shell, :privileged => false, :path => "./scripts/52-download-linux-kernel.sh"
+    config.vm.provision :shell, :path => "./scripts/51-install-cgreen.sh"
+    config.vm.provision :shell, :privileged => false, :path => "./scripts/52-set-environment-variables.sh"
     # config.vm.provision :shell, :privileged => false, :path => "./scripts/53-configure-and-compile-linux-kernel.sh"
 
   # Provider-specific configuration so you can fine-tune various

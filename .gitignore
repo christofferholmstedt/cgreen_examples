@@ -1,2 +1,8 @@
 # Vagrant
 .vagrant
+
+# Object files
+*.o
+*.test
+*.exe
+*.run
