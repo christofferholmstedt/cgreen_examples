@@ -14,6 +14,14 @@ Ensure(single_word_sentence_invokes_callback_once) {
     words("Word", &mocked_callback, NULL);
 }
 
+Ensure(phrase_invokes_callback_for_each_word) {
+    expect(mocked_callback, when(word, is_equal_to_string("Birds")));
+    expect(mocked_callback, when(word, is_equal_to_string("of")));
+    expect(mocked_callback, when(word, is_equal_to_string("a")));
+    expect(mocked_callback, when(word, is_equal_to_string("feather")));
+    words("Birds of a feather", &mocked_callback, NULL);
+}
+
 Ensure(word_count_returned_from_split) {
     char *sentence = strdup("Birds of a feather");
     int word_count = split_words(sentence);
@@ -36,6 +44,7 @@ TestSuite *words_tests() {
     add_test(suite, word_count_returned_from_split);
     add_test(suite, spaces_should_be_converted_to_zeroes);
     add_test(suite, single_word_sentence_invokes_callback_once);
+    add_test(suite, phrase_invokes_callback_for_each_word);
 
     return suite;
 }
