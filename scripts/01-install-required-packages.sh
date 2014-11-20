@@ -14,4 +14,4 @@ sudo apt-get -y install vim git
 ### Build tools
 sudo apt-get -y install build-essential doxygen \
                         subversion cmake \
-                        perl-doc
+                        perl-doc graphviz
